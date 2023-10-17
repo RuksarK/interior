@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registeration form</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div id="nav1">
+        <h4>Up to 15% OFF* on your Home Interiors. Limited Period Offer-Hurry Up!Book Free Consultation </h4>
+    </div>
+    <div id="nav">
+        <img class="logo" src="./creative music logo designs (4).png">
+      
+        <a class="navbar" href="./Livingroom.html">LIVING ROOM</a>
+        <a class="navbar" href="./Bedroom.html">BEDROOM</a>
+        <a class="navbar" href="./Kitchen.html">KITCHEN</a>
+        <a class="navbar" href="./Bathroom.html">BATHROOM</a>
+        <a class="navbar" href="./Balcony.html">BALCONY</a> 
+    </div>
+    <div id="register">
+        <video autoplay loop muted src="./production_id_3773486 (1080p) (1).mp4"></video>
+   
+    
+        <form class="form" name="submit-to-google-sheet">
+            <h3>Book Consultation</h3>
+            <input type="email" name="E-mail" placeholder="Enter E-mail" required>
+            <input type="text" name="Mobile no" placeholder="Enter Mobile no" required>
+            <input type="password" name="Password" placeholder="Create Password" required>
+            <button class="btn">Submit</button> 
+            <span id="msg"></span>
+           
+        </form>
+         
+        </div>
+  
+    
+    
+    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbya5KCrYMRUM1Vn0mv37JiwSODH6PB6AFuMoHZFLo423bViTEskLqwJBkVxHpHWFMiG8A/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Booking confirm ✅ we will connect you within 24hrs."
+                setTimeout(function(){
+                    msg.innerHTML=""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
